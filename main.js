@@ -56,8 +56,14 @@ function orderPizza() {
     return new Promise(function (resolve, reject) {
         console.log("placing order");
         setTimeout(function () {
-            console.log("order placed");
-            resolve("Order placed successfully");
+            var success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("order placed");
+                resolve("Order placed successfully");
+            }
+            else {
+                reject("Failed to place order");
+            }
         }, 3000);
     });
 }
@@ -65,8 +71,14 @@ function preparePizza() {
     return new Promise(function (resolve, reject) {
         console.log("preparing pizza");
         setTimeout(function () {
-            console.log("pizza is being prepared 🍕");
-            resolve("Pizza prepared successfully");
+            var success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("pizza is being prepared 🍕");
+                resolve("Pizza prepared successfully");
+            }
+            else {
+                reject("Failed to prepare pizza");
+            }
         }, 3000);
     });
 }
@@ -74,8 +86,14 @@ function deliverPizza() {
     return new Promise(function (resolve, reject) {
         console.log("delivering pizza");
         setTimeout(function () {
-            console.log("lo khao pizza");
-            resolve("Pizza delivered successfully");
+            var success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("lo khao pizza");
+                resolve("Pizza delivered successfully");
+            }
+            else {
+                reject("Failed to deliver pizza");
+            }
         }, 3000);
     });
 }
