@@ -21,13 +21,12 @@
 //   }
 //   syncTask();
 //   console.log("All tasks completed");
-// async function with settimeout
 function orderPizza(prepareCb) {
     console.log("placing order");
     setTimeout(function () {
         console.log("order placed");
-    }, 1000);
-    prepareCb();
+        prepareCb();
+    }, 3000);
 }
 function prepearPizza() {
     console.log("preparing pizza");
