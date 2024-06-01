@@ -40,15 +40,22 @@ function orderPizza(prepareCb: Function) {
     console.log("placing order")
     setTimeout(() => {
         console.log("order placed")
-        prepareCb()
+        prepareCb(deliverycb)
     }, 3000)   
 }
 
-function prepearPizza() {    
+function prepearPizza(deliverycb: any) {    
     console.log("preparing pizza")
     setTimeout(() => {
         console.log("pizza is being prepared 🍕")      
-    }, 3000)
+        deliverycb()
+    }, 3000)   
+}
+
+
+function deliverycb() {
+    console.log("delivering pizza")
+    console.log("lo khao pizza")
 }
 
 orderPizza(prepearPizza)

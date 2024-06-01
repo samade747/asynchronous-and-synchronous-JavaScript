@@ -1,3 +1,4 @@
+// class as on 1 6 2024
 // // console only prints i
 // console.log("i")
 // // async function with settimeout
@@ -25,13 +26,18 @@ function orderPizza(prepareCb) {
     console.log("placing order");
     setTimeout(function () {
         console.log("order placed");
-        prepareCb();
+        prepareCb(deliverycb);
     }, 3000);
 }
-function prepearPizza() {
+function prepearPizza(deliverycb) {
     console.log("preparing pizza");
     setTimeout(function () {
         console.log("pizza is being prepared 🍕");
+        deliverycb();
     }, 3000);
+}
+function deliverycb() {
+    console.log("delivering pizza");
+    console.log("lo khao pizza");
 }
 orderPizza(prepearPizza);
