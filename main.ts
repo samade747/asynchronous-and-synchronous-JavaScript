@@ -85,49 +85,63 @@
 
 
 
-
-function orderPizza() {
+function orderPizza(): Promise<string> {
     return new Promise((resolve, reject) => {
         console.log("placing order");
         setTimeout(() => {
-            console.log("order placed");
-            resolve("Order placed successfully");
+            const success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("order placed");
+                resolve("Order placed successfully");
+            } else {
+                reject("Failed to place order");
+            }
         }, 3000);
     });
 }
 
-function preparePizza() {
+function preparePizza(): Promise<string> {
     return new Promise((resolve, reject) => {
         console.log("preparing pizza");
         setTimeout(() => {
-            console.log("pizza is being prepared 🍕");
-            resolve("Pizza prepared successfully");
+            const success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("pizza is being prepared 🍕");
+                resolve("Pizza prepared successfully");
+            } else {
+                reject("Failed to prepare pizza");
+            }
         }, 3000);
     });
 }
 
-function deliverPizza() {
+function deliverPizza(): Promise<string> {
     return new Promise((resolve, reject) => {
         console.log("delivering pizza");
         setTimeout(() => {
-            console.log("lo khao pizza");
-            resolve("Pizza delivered successfully");
+            const success = Math.random() > 0.2; // Simulating a success rate
+            if (success) {
+                console.log("lo khao pizza");
+                resolve("Pizza delivered successfully");
+            } else {
+                reject("Failed to deliver pizza");
+            }
         }, 3000);
     });
 }
 
 orderPizza()
-    .then((orderMessage) => {
+    .then((orderMessage: string) => {
         console.log(orderMessage);
         return preparePizza();
     })
-    .then((prepareMessage) => {
+    .then((prepareMessage: string) => {
         console.log(prepareMessage);
         return deliverPizza();
     })
-    .then((deliverMessage) => {
+    .then((deliverMessage: string) => {
         console.log(deliverMessage);
     })
-    .catch((error) => {
+    .catch((error: any) => {
         console.error("An error occurred:", error);
     });
