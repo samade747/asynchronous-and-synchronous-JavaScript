@@ -22,22 +22,75 @@
 //   }
 //   syncTask();
 //   console.log("All tasks completed");
-function orderPizza(prepareCb) {
-    console.log("placing order");
-    setTimeout(function () {
-        console.log("order placed");
-        prepareCb(deliverycb);
-    }, 3000);
+// function orderPizza(prepareCb: Function) {
+//     console.log("placing order")
+//     setTimeout(() => {
+//         console.log("order placed")
+//         prepareCb(deliverycb)
+//     }, 3000)   
+// }
+// function prepearPizza(deliverycb: any) {    
+//     console.log("preparing pizza")
+//     setTimeout(() => {
+//         console.log("pizza is being prepared 🍕")      
+//         deliverycb()
+//     }, 3000)   
+// }
+// function deliverycb() {
+//     console.log("delivering pizza")
+//     console.log("lo khao pizza")
+// }
+// orderPizza(prepearPizza)
+// function with async promises 
+// function orderPizzaProm(){
+//     return new Promise((resolve) => {
+//         console.log("placing order")
+//         setTimeout(() => {
+//             console.log("order placed")
+//             resolve("pizza")
+//         }, 3000)   
+//     }) 
+// }
+// orderPizzaProm().then((pizza) => console.log("I got my " + pizza))
+function orderPizza() {
+    return new Promise(function (resolve, reject) {
+        console.log("placing order");
+        setTimeout(function () {
+            console.log("order placed");
+            resolve("Order placed successfully");
+        }, 3000);
+    });
 }
-function prepearPizza(deliverycb) {
-    console.log("preparing pizza");
-    setTimeout(function () {
-        console.log("pizza is being prepared 🍕");
-        deliverycb();
-    }, 3000);
+function preparePizza() {
+    return new Promise(function (resolve, reject) {
+        console.log("preparing pizza");
+        setTimeout(function () {
+            console.log("pizza is being prepared 🍕");
+            resolve("Pizza prepared successfully");
+        }, 3000);
+    });
 }
-function deliverycb() {
-    console.log("delivering pizza");
-    console.log("lo khao pizza");
+function deliverPizza() {
+    return new Promise(function (resolve, reject) {
+        console.log("delivering pizza");
+        setTimeout(function () {
+            console.log("lo khao pizza");
+            resolve("Pizza delivered successfully");
+        }, 3000);
+    });
 }
-orderPizza(prepearPizza);
+orderPizza()
+    .then(function (orderMessage) {
+    console.log(orderMessage);
+    return preparePizza();
+})
+    .then(function (prepareMessage) {
+    console.log(prepareMessage);
+    return deliverPizza();
+})
+    .then(function (deliverMessage) {
+    console.log(deliverMessage);
+})
+    .catch(function (error) {
+    console.error("An error occurred:", error);
+});
