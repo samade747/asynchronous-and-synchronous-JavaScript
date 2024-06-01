@@ -36,7 +36,7 @@
   
 
 
-function orderPizza(prepareCb: any) {
+function orderPizza(prepareCb: Function) {
     console.log("placing order")
     setTimeout(() => {
         console.log("order placed")
