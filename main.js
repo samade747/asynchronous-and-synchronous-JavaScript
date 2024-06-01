@@ -22,10 +22,17 @@
 //   syncTask();
 //   console.log("All tasks completed");
 // async function with settimeout
-function orderPizza() {
+function orderPizza(prepareCb) {
     console.log("placing order");
     setTimeout(function () {
         console.log("order placed");
+    }, 1000);
+    prepareCb();
+}
+function prepearPizza() {
+    console.log("preparing pizza");
+    setTimeout(function () {
+        console.log("pizza is being prepared 🍕");
     }, 3000);
 }
-orderPizza();
+orderPizza(prepearPizza);

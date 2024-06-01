@@ -35,16 +35,20 @@
 //   console.log("All tasks completed");
   
 
-// async function with settimeout
 
-function orderPizza() {
+function orderPizza(prepareCb: any) {
     console.log("placing order")
-
     setTimeout(() => {
         console.log("order placed")
-    }, 3000)
-    
+        prepareCb()
+    }, 3000)   
 }
 
-orderPizza()
+function prepearPizza() {    
+    console.log("preparing pizza")
+    setTimeout(() => {
+        console.log("pizza is being prepared 🍕")      
+    }, 3000)
+}
 
+orderPizza(prepearPizza)
